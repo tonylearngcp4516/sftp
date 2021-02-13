@@ -1,0 +1,18 @@
+mkdir bigdata-class2
+cd bigdata-class2
+sudo docker pull joway/hadoop-cluster
+git clone https://github.com/joway/hadoop-cluster-docker
+sudo docker network create --driver=bridge hadoop
+cd bigdata-class2/hadoop-cluster-docker
+sudo ./start-container.sh
+./start-hadoop.sh
+
+wget -O lamp.zip https://github.com/teddysun/lamp/archive/master.zip
+
+create table output(starting_phrase VARCHAR(250), following_word VARCHAR(250), count INT);
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'hadoopcourse' WITH GRANT OPTION;
+
+Q1: hdfs loss after exit
+refer to https://stackoverflow.com/questions/28379048/data-lost-after-shutting-down-hadoop-hdfs
+https://stackoverflow.com/questions/22565200/where-hdfs-stores-data --> couldn't find anything in xml files
